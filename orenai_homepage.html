@@ -1,0 +1,1641 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>折れない組織 | 臨床心理士 杉浦孝介 — 人が壊れない職場をつくる</title>
+<meta name="description" content="臨床心理士・公認心理師・産業カウンセラーの杉浦孝介が、1,500件超の臨床経験をもとに管理職・経営者・人事担当者へ組織のメンタルヘルス予防を提供します。">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+============================================================ */
+:root {
+  --green-deep:    #1A3A2A;
+  --green-mid:     #2D5C42;
+  --green-accent:  #3D7A58;
+  --green-light:   #6BAF85;
+  --green-pale:    #E8F2EC;
+  --gold:          #C9A84C;
+  --gold-light:    #E8C97A;
+  --gold-pale:     #F9F3E3;
+  --cream:         #F5F0E8;
+  --white:         #FFFFFF;
+  --charcoal:      #1C1C1C;
+  --charcoal-mid:  #3A3A3A;
+  --gray:          #6B6B6B;
+  --gray-light:    #B0B0B0;
+  --border:        rgba(201,168,76,0.2);
+
+  --serif:   'Noto Serif JP', 'Georgia', serif;
+  --sans:    'Noto Sans JP', sans-serif;
+  --display: 'Cormorant Garamond', 'Georgia', serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition: 0.4s var(--ease-out);
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--charcoal);
+  background: var(--white);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+
+/* ============================================================
+   UTILITIES
+============================================================ */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-label {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 900;
+  line-height: 1.4;
+  color: var(--green-deep);
+  letter-spacing: 0.05em;
+}
+
+.section-title--light {
+  color: var(--white);
+}
+
+.section-body {
+  font-size: 15px;
+  color: var(--gray);
+  line-height: 1.9;
+  max-width: 600px;
+}
+
+/* ============================================================
+   FADE-IN ANIMATION
+============================================================ */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(26,58,42,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 64px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0.15em;
+}
+
+.nav-logo span {
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.75);
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--gold-light);
+}
+
+.nav-cta {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  background: var(--gold);
+  color: var(--green-deep) !important;
+  padding: 9px 20px;
+  border-radius: 2px;
+  font-weight: 700;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover {
+  background: var(--gold-light) !important;
+  color: var(--green-deep) !important;
+}
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero {
+  min-height: 100vh;
+  background: var(--green-deep);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 64px;
+}
+
+/* 背景装飾 */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 40%, rgba(61,122,88,0.3) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 80%, rgba(45,92,66,0.4) 0%, transparent 45%);
+}
+
+/* 細線グリッド */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 79px, rgba(201,168,76,0.04) 79px, rgba(201,168,76,0.04) 80px),
+    repeating-linear-gradient(90deg, transparent, transparent 79px, rgba(201,168,76,0.04) 79px, rgba(201,168,76,0.04) 80px);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.hero-label {
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 20px;
+  opacity: 0.85;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.hero-title-sub {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.5vw, 28px);
+  font-weight: 300;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.hero-desc {
+  font-size: 14px;
+  color: rgba(245,240,232,0.7);
+  line-height: 2;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--green-deep);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 16px 32px;
+  border-radius: 2px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(245,240,232,0.75);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(201,168,76,0.4);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary:hover {
+  color: var(--gold-light);
+  border-color: var(--gold-light);
+}
+
+/* ヒーロー右カード */
+.hero-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px;
+  backdrop-filter: blur(8px);
+}
+
+.hero-card-title {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.stat-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.stat-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.12);
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stat-num {
+  font-family: var(--display);
+  font-size: 38px;
+  font-weight: 600;
+  color: var(--gold-light);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.stat-unit {
+  font-size: 12px;
+  color: var(--gold);
+  align-self: flex-end;
+  margin-bottom: 4px;
+}
+
+.stat-desc {
+  font-size: 12px;
+  color: rgba(245,240,232,0.6);
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* ============================================================
+   PROBLEM SECTION
+============================================================ */
+.problem {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 56px;
+}
+
+.problem-card {
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  padding: 28px 32px;
+  border-radius: 0 4px 4px 0;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.problem-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+.problem-card-num {
+  font-family: var(--display);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.problem-card-title {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.5;
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.problem-card-body {
+  font-size: 13px;
+  color: var(--gray);
+  line-height: 1.85;
+}
+
+.problem-lead {
+  margin-top: 56px;
+  padding: 36px 40px;
+  background: var(--green-deep);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.problem-lead-line {
+  width: 3px;
+  height: 80px;
+  background: var(--gold);
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.problem-lead-text {
+  font-family: var(--serif);
+  font-size: clamp(15px, 2vw, 19px);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+.problem-lead-text em {
+  color: var(--gold-light);
+  font-style: normal;
+}
+
+/* ============================================================
+   ABOUT (WHO)
+============================================================ */
+.about {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 56px;
+}
+
+/* 写真プレースホルダー */
+.about-photo {
+  position: relative;
+}
+
+.about-photo-frame {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: linear-gradient(160deg, var(--green-mid) 0%, var(--green-deep) 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(107,175,133,0.3) 0%, transparent 60%);
+}
+
+.about-photo-placeholder {
+  position: relative;
+  z-index: 1;
+  color: rgba(255,255,255,0.2);
+  font-family: var(--display);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.about-photo-badge {
+  position: absolute;
+  bottom: -16px;
+  right: -16px;
+  background: var(--gold);
+  color: var(--green-deep);
+  padding: 12px 20px;
+  border-radius: 3px;
+  font-family: var(--serif);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+}
+
+.about-content {}
+
+.about-name {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--green-deep);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+.about-name-en {
+  font-family: var(--display);
+  font-size: 13px;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  margin-bottom: 24px;
+}
+
+.about-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.credential-tag {
+  background: var(--green-pale);
+  color: var(--green-mid);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 5px 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(45,92,66,0.2);
+}
+
+.about-story {
+  font-size: 14px;
+  color: var(--charcoal-mid);
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.about-story strong {
+  color: var(--green-deep);
+  font-weight: 700;
+}
+
+.about-quote {
+  margin-top: 28px;
+  padding: 24px 28px;
+  border-left: 3px solid var(--gold);
+  background: var(--gold-pale);
+  border-radius: 0 4px 4px 0;
+}
+
+.about-quote p {
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.7;
+  letter-spacing: 0.03em;
+}
+
+/* ============================================================
+   SERVICE
+============================================================ */
+.service {
+  padding: 100px 0;
+  background: var(--green-deep);
+  position: relative;
+  overflow: hidden;
+}
+
+.service::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 90% 10%, rgba(61,122,88,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(45,92,66,0.3) 0%, transparent 50%);
+}
+
+.service-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.service-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 36px 28px;
+  transition: background var(--transition), transform var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.service-card:hover {
+  background: rgba(255,255,255,0.08);
+  transform: translateY(-4px);
+}
+
+.service-card:hover::before {
+  transform: scaleX(1);
+}
+
+.service-icon {
+  font-family: var(--display);
+  font-size: 32px;
+  color: var(--gold);
+  opacity: 0.6;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.service-card-title {
+  font-family: var(--serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+.service-card-body {
+  font-size: 13px;
+  color: rgba(245,240,232,0.65);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.service-card-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.service-card-list li {
+  font-size: 12px;
+  color: rgba(245,240,232,0.5);
+  padding-left: 16px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.service-card-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  opacity: 0.5;
+}
+
+/* ============================================================
+   YOUTUBE SECTION
+============================================================ */
+.youtube {
+  padding: 100px 0;
+  background: var(--cream);
+}
+
+.youtube-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.yt-card {
+  background: var(--white);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.yt-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+
+.yt-thumb {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.yt-thumb::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 40%, rgba(61,122,88,0.4) 0%, transparent 60%);
+}
+
+.yt-thumb-text {
+  position: relative;
+  z-index: 1;
+}
+
+.yt-thumb-tag {
+  font-family: var(--display);
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.yt-thumb-title {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.45;
+}
+
+.yt-thumb-title em {
+  color: var(--gold-light);
+  font-style: normal;
+}
+
+.yt-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: rgba(201,168,76,0.85);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.yt-play::after {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 14px;
+  border-color: transparent transparent transparent var(--green-deep);
+  margin-left: 3px;
+}
+
+.yt-info {
+  padding: 18px 20px;
+}
+
+.yt-info-title {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-deep);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.yt-info-meta {
+  font-size: 11px;
+  color: var(--gray-light);
+  font-family: var(--display);
+  letter-spacing: 0.1em;
+}
+
+.yt-cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.btn-youtube {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--green-deep);
+  color: var(--white);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 16px 36px;
+  border-radius: 2px;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btn-youtube:hover {
+  background: var(--green-mid);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   TESTIMONIAL / VOICE
+============================================================ */
+.voice {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.voice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 56px;
+}
+
+.voice-card {
+  padding: 28px;
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: 4px;
+  position: relative;
+  transition: box-shadow var(--transition);
+}
+
+.voice-card:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+}
+
+.voice-quote-mark {
+  font-family: var(--display);
+  font-size: 60px;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 1;
+  margin-bottom: -10px;
+}
+
+.voice-text {
+  font-size: 13px;
+  color: var(--charcoal-mid);
+  line-height: 1.9;
+  margin-bottom: 20px;
+}
+
+.voice-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+
+.voice-avatar {
+  width: 36px;
+  height: 36px;
+  background: var(--green-pale);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice-avatar-icon {
+  width: 18px;
+  height: 18px;
+  background: var(--green-mid);
+  border-radius: 50%;
+  opacity: 0.4;
+}
+
+.voice-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--green-deep);
+  letter-spacing: 0.05em;
+}
+
+.voice-role {
+  font-size: 10px;
+  color: var(--gray-light);
+  font-family: var(--display);
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   CONTACT
+============================================================ */
+.contact {
+  padding: 100px 0;
+  background: var(--green-deep);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 60% 50%, rgba(61,122,88,0.25) 0%, transparent 60%);
+}
+
+.contact-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  gap: 80px;
+  align-items: center;
+}
+
+.contact-desc {
+  font-size: 14px;
+  color: rgba(245,240,232,0.65);
+  line-height: 2;
+  max-width: 460px;
+  margin-top: 20px;
+  margin-bottom: 32px;
+}
+
+.contact-note {
+  font-size: 12px;
+  color: rgba(245,240,232,0.4);
+  font-family: var(--display);
+  letter-spacing: 0.1em;
+  font-style: italic;
+}
+
+/* フォーム */
+.contact-form {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-family: var(--display);
+}
+
+.form-label span {
+  font-size: 9px;
+  color: #E08080;
+  margin-left: 4px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: var(--cream);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(245,240,232,0.25);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--gold);
+  background: rgba(255,255,255,0.1);
+}
+
+.form-select option {
+  background: var(--green-deep);
+  color: var(--cream);
+}
+
+.form-textarea {
+  height: 100px;
+  resize: vertical;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--gold);
+  color: var(--green-deep);
+  font-family: var(--serif);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  padding: 16px;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   FOOTER
+============================================================ */
+.footer {
+  background: #0D1F15;
+  padding: 56px 0 32px;
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand-name {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+
+.footer-brand-name span { color: var(--gold); }
+
+.footer-brand-sub {
+  font-family: var(--display);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: rgba(245,240,232,0.4);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.footer-brand-desc {
+  font-size: 12px;
+  color: rgba(245,240,232,0.45);
+  line-height: 1.85;
+}
+
+.footer-col-title {
+  font-family: var(--display);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: rgba(245,240,232,0.5);
+  transition: color 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.footer-links a:hover {
+  color: var(--gold-light);
+}
+
+.footer-bottom {
+  padding-top: 28px;
+  border-top: 1px solid rgba(201,168,76,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-copy {
+  font-size: 11px;
+  color: rgba(245,240,232,0.25);
+  font-family: var(--display);
+  letter-spacing: 0.1em;
+}
+
+.footer-policy {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-policy a {
+  font-size: 11px;
+  color: rgba(245,240,232,0.3);
+  font-family: var(--display);
+  letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+
+.footer-policy a:hover {
+  color: var(--gold);
+}
+
+/* ============================================================
+   RESPONSIVE
+============================================================ */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+
+  .nav-links { display: none; }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 0;
+  }
+
+  .hero-card { display: none; }
+
+  .problem-grid { grid-template-columns: 1fr; }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-photo { max-width: 300px; }
+
+  .service-grid { grid-template-columns: 1fr; }
+
+  .youtube-grid { grid-template-columns: 1fr; }
+
+  .voice-grid { grid-template-columns: 1fr; }
+
+  .contact-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+  NAVIGATION
+============================================================ -->
+<nav class="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">折れない<span>組織</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">プロフィール</a></li>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#youtube">YouTube</a></li>
+        <li><a href="#contact" class="nav-cta">お問い合わせ</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================================
+  HERO
+============================================================ -->
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="fade-in">
+        <span class="hero-label">Clinical Psychology × Management</span>
+        <h1 class="hero-title">人が壊れない<br>職場をつくる</h1>
+        <p class="hero-title-sub">臨床心理学からはじめる<br>組織のメンタルヘルス予防</p>
+        <p class="hero-desc">
+          精神科クリニックで見てきた現実があります。<br>
+          回復して職場に戻っても、また同じように心を病んで戻ってくる人々。<br>
+          原因の多くは、個人の弱さではなく<strong style="color:var(--gold-light);">組織の構造的な問題</strong>にありました。
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">無料相談を予約する</a>
+          <a href="#service" class="btn-secondary">サービスを見る →</a>
+        </div>
+      </div>
+
+      <div class="hero-card fade-in" style="animation-delay:0.2s">
+        <div class="hero-card-title">実績 ／ Credentials</div>
+        <ul class="stat-list">
+          <li class="stat-item">
+            <span class="stat-num">1,500</span>
+            <span class="stat-unit">件超</span>
+            <span class="stat-desc">精神科・学校・産業分野での<br>累計臨床件数</span>
+          </li>
+          <li class="stat-item">
+            <span class="stat-num">15</span>
+            <span class="stat-unit">年</span>
+            <span class="stat-desc">最長伴走期間。長期的な<br>変容プロセスを知っている</span>
+          </li>
+          <li class="stat-item">
+            <span class="stat-num">3</span>
+            <span class="stat-unit">資格</span>
+            <span class="stat-desc">臨床心理士・公認心理師<br>産業カウンセラー</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  PROBLEM
+============================================================ -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">The Problem</span>
+      <h2 class="section-title">こんな課題、<br>抱えていませんか？</h2>
+    </div>
+
+    <div class="problem-grid">
+      <div class="problem-card fade-in">
+        <div class="problem-card-num">01</div>
+        <h3 class="problem-card-title">部下が突然「うつです」と言ってきた。<br>どう対応すれば良いかわからない</h3>
+        <p class="problem-card-body">初動の対応を誤ると、症状が悪化するリスクがあります。「見守る」と「放置する」の境界線はどこか。正しい知識が必要です。</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-num">02</div>
+        <h3 class="problem-card-title">心理的安全性を高めようとしているが、<br>組織が緩むばかりで変わらない</h3>
+        <p class="problem-card-body">「何でも許容する」ことが心理的安全性だという誤解が広がっています。規律と安全性の統合が必要です。</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-num">03</div>
+        <h3 class="problem-card-title">優秀な人材が次々と離職していく。<br>原因がわからない</h3>
+        <p class="problem-card-body">離職の本当の理由は、アンケートには書かれません。組織の心理的構造を読み解く視点が必要です。</p>
+      </div>
+      <div class="problem-card fade-in">
+        <div class="problem-card-num">04</div>
+        <h3 class="problem-card-title">指導するとハラスメントと言われそうで、<br>部下に何も言えなくなっている</h3>
+        <p class="problem-card-body">「存在の肯定」と「行為の峻別」を分離する技術を知らないと、指導はできません。これは訓練で習得できます。</p>
+      </div>
+    </div>
+
+    <div class="problem-lead fade-in">
+      <div class="problem-lead-line"></div>
+      <p class="problem-lead-text">
+        これらはすべて、<em>個人の能力不足ではなく</em>、<br>
+        組織の心理的構造の問題です。<br>
+        臨床心理学の視点から、根本から解決します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  ABOUT
+============================================================ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">About</span>
+      <h2 class="section-title">なぜ、臨床心理士が<br>経営・管理職支援をするのか</h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-photo fade-in">
+        <div class="about-photo-frame">
+          <div class="about-photo-placeholder">
+            ［ プロフィール写真 ］<br>
+            <span style="font-size:10px;">推奨：白またはグレー背景<br>スーツ不要・ジャケット可</span>
+          </div>
+        </div>
+        <div class="about-photo-badge">
+          臨床心理士<br>公認心理師<br>産業カウンセラー
+        </div>
+      </div>
+
+      <div class="about-content fade-in">
+        <h3 class="about-name">杉浦 孝介</h3>
+        <p class="about-name-en">Kosuke Sugiura</p>
+        <div class="about-credentials">
+          <span class="credential-tag">臨床心理士</span>
+          <span class="credential-tag">公認心理師</span>
+          <span class="credential-tag">産業カウンセラー</span>
+        </div>
+
+        <p class="about-story">
+          精神科クリニック、学校、そして産業分野で、1,500件を超える方々の人生に深く向き合ってきました。中には<strong>15年間、伴走し続けてきた方</strong>もいます。
+        </p>
+        <p class="about-story">
+          しかし、どれほど丁寧にカウンセリングを重ねても、不調に陥る人が後を絶ちませんでした。回復して職場に戻っても、また同じように心を病んで戻ってくる人々。
+        </p>
+        <p class="about-story">
+          その姿を目の当たりにする中で、一つの結論に達しました。<strong>「個人の治療だけでは、限界がある」</strong>。原因の多くは、環境との相互作用——つまり、組織の機能不全という構造的な問題にこそありました。
+        </p>
+        <p class="about-story">
+          人が壊れてから修復するのではなく、人が壊れない「場」を作らなければ、この連鎖は止まらない。そう考えた時、私が向き合うべき相手は、<strong>組織の環境を決める経営者・管理職の方々</strong>だと気づきました。
+        </p>
+
+        <div class="about-quote">
+          <p>「メンタルヘルスの予防」——これが私の最も強い動機です。<br>
+          一人のメンタル不調が、どれほど多くの人の人生に影響を与えるか。<br>
+          私は、その苦しみに直面する人を、一人でも減らしたい。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  SERVICE
+============================================================ -->
+<section class="service" id="service">
+  <div class="container service-inner">
+    <div class="fade-in">
+      <span class="section-label" style="color:var(--gold);">Service</span>
+      <h2 class="section-title section-title--light">提供サービス</h2>
+    </div>
+
+    <div class="service-grid">
+      <div class="service-card fade-in">
+        <div class="service-icon">I.</div>
+        <h3 class="service-card-title">管理職向け<br>ラインケア研修</h3>
+        <p class="service-card-body">部下のメンタル不調に気づき、適切に対応するためのスキルを習得します。教科書的な知識ではなく、臨床現場で起きているリアルをベースにした実践的な内容です。</p>
+        <ul class="service-card-list">
+          <li>メンタル不調の早期サインの見分け方</li>
+          <li>初動対応と「言ってはいけない言葉」</li>
+          <li>休職・復職プロセスの管理職の役割</li>
+          <li>ハラスメントにならない指導の技術</li>
+        </ul>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">II.</div>
+        <h3 class="service-card-title">組織アセスメント<br>＆コンサルティング</h3>
+        <p class="service-card-body">組織の中で何が起きているかを、臨床心理学の視点から分析します。従業員へのヒアリングや職場環境の観察を通じて、「目に見えない課題」を可視化します。</p>
+        <ul class="service-card-list">
+          <li>離職・不調の構造的原因の特定</li>
+          <li>経営者・管理職へのフィードバック</li>
+          <li>具体的な改善施策の提案</li>
+          <li>継続的な伴走サポート</li>
+        </ul>
+      </div>
+
+      <div class="service-card fade-in">
+        <div class="service-icon">III.</div>
+        <h3 class="service-card-title">経営者向け<br>個別セッション</h3>
+        <p class="service-card-body">経営者の「孤独」に向き合います。自分の物語を整理し、組織に引き継ぎたいものを言語化するプロセスを、臨床心理士が伴走します。</p>
+        <ul class="service-card-list">
+          <li>経営者自身の「物語の整理」</li>
+          <li>負の遺産を資産に変える再編集</li>
+          <li>バウンダリー・マネジメントの実践</li>
+          <li>継承戦略の設計サポート</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  YOUTUBE
+============================================================ -->
+<section class="youtube" id="youtube">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">YouTube</span>
+      <h2 class="section-title">折れない組織<br>チャンネル</h2>
+      <p class="section-body" style="margin-top:16px;">毎週水曜18時更新。管理職が「今週の月曜日に使える」心理学的マネジメントを、臨床の現場から届けます。</p>
+    </div>
+
+    <div class="youtube-grid">
+      <div class="yt-card fade-in">
+        <div class="yt-thumb">
+          <div class="yt-play"></div>
+          <div class="yt-thumb-text">
+            <div class="yt-thumb-tag">管理職必見</div>
+            <div class="yt-thumb-title">元精神科クリニックの臨床心理士が、<br>なぜ<em>管理職支援</em>をしているのか</div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <div class="yt-info-title">元精神科クリニックの臨床心理士が、なぜ管理職支援をしているのか</div>
+          <div class="yt-info-meta">自己紹介 ／ Week 1</div>
+        </div>
+      </div>
+
+      <div class="yt-card fade-in">
+        <div class="yt-thumb">
+          <div class="yt-play"></div>
+          <div class="yt-thumb-text">
+            <div class="yt-thumb-tag">組織心理学</div>
+            <div class="yt-thumb-title">職場のメンタル不調、<br><em>9割は管理職</em>の対応で防げる</div>
+          </div>
+        </div>
+        <div class="yt-info">
+          <div class="yt-info-title">職場のメンタル不調、9割は管理職の対応で防げる【臨床心理士が解説】</div>
+          <div class="yt-info-meta">実績・専門性 ／ Week 2</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="yt-cta fade-in">
+      <a href="https://youtube.com/@orenai-soshiki" target="_blank" class="btn-youtube">
+        YouTubeチャンネルを見る →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  VOICE
+============================================================ -->
+<section class="voice" id="voice">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label">Voice</span>
+      <h2 class="section-title">ご参加者の声</h2>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card fade-in">
+        <div class="voice-quote-mark">"</div>
+        <p class="voice-text">「管理職研修は何度か受けてきましたが、今回が一番腑に落ちました。教科書ではなく、実際の現場で起きていることを話してくれるので、明日から使えるイメージが持てました。」</p>
+        <div class="voice-meta">
+          <div class="voice-avatar"><div class="voice-avatar-icon"></div></div>
+          <div>
+            <div class="voice-name">製造業 管理職 40代</div>
+            <div class="voice-role">ラインケア研修 参加者</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice-card fade-in">
+        <div class="voice-quote-mark">"</div>
+        <p class="voice-text">「部下に対してどこまで踏み込んでいいか、ずっとわからなかった。『存在の肯定』と『行為の峻別』という考え方を知って、指導に自信が持てるようになりました。」</p>
+        <div class="voice-meta">
+          <div class="voice-avatar"><div class="voice-avatar-icon"></div></div>
+          <div>
+            <div class="voice-name">IT企業 部長 30代</div>
+            <div class="voice-role">個別セッション 参加者</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="voice-card fade-in">
+        <div class="voice-quote-mark">"</div>
+        <p class="voice-text">「組織の問題だと思っていたことが、実は自分自身の課題の反映だったと気づいた時は衝撃でした。でも、だからこそ解決の糸口が見えた。本当に貴重な経験でした。」</p>
+        <div class="voice-meta">
+          <div class="voice-avatar"><div class="voice-avatar-icon"></div></div>
+          <div>
+            <div class="voice-name">福祉事業 経営者 50代</div>
+            <div class="voice-role">経営者向けセッション 参加者</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  CONTACT
+============================================================ -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="fade-in">
+        <span class="section-label" style="color:var(--gold);">Contact</span>
+        <h2 class="section-title section-title--light">まずは、<br>無料相談から</h2>
+        <p class="contact-desc">
+          「うちの組織に当てはまるか、わからない」という段階で構いません。<br>
+          臨床心理学の視点から、あなたの組織の現状を一緒に整理します。<br>
+          売り込みは一切しません。
+        </p>
+        <p class="contact-note">※ご相談内容の守秘義務を厳守します</p>
+      </div>
+
+      <div class="contact-form fade-in">
+        <div class="form-group">
+          <label class="form-label">お名前 <span>*</span></label>
+          <input type="text" class="form-input" placeholder="山田 太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label">会社名・役職</label>
+          <input type="text" class="form-input" placeholder="〇〇株式会社 人事部長">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス <span>*</span></label>
+          <input type="email" class="form-input" placeholder="email@example.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">ご相談の種類</label>
+          <select class="form-select">
+            <option value="">選択してください</option>
+            <option>管理職向けラインケア研修</option>
+            <option>組織アセスメント・コンサルティング</option>
+            <option>経営者向け個別セッション</option>
+            <option>YouTube・講演のご依頼</option>
+            <option>その他・まずは話を聞きたい</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">ご相談内容（任意）</label>
+          <textarea class="form-textarea" placeholder="現在抱えている課題や、気になっていることをお気軽にお書きください。"></textarea>
+        </div>
+        <button type="submit" class="form-submit">送信する</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+  FOOTER
+============================================================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">折れない<span>組織</span></div>
+        <div class="footer-brand-sub">Orenai Soshiki</div>
+        <p class="footer-brand-desc">
+          臨床心理士・公認心理師・産業カウンセラーの杉浦孝介が、1,500件超の臨床経験をもとに、人が壊れない職場づくりを支援します。
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#about">プロフィール</a></li>
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#youtube">YouTube</a></li>
+          <li><a href="#voice">ご参加者の声</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Service</div>
+        <ul class="footer-links">
+          <li><a href="#service">管理職向けラインケア研修</a></li>
+          <li><a href="#service">組織アセスメント</a></li>
+          <li><a href="#service">経営者向け個別セッション</a></li>
+          <li><a href="https://youtube.com" target="_blank">YouTubeチャンネル</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 折れない組織 ／ 杉浦孝介. All Rights Reserved.</p>
+      <div class="footer-policy">
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">免責事項</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+  JAVASCRIPT
+============================================================ -->
+<script>
+// Intersection Observer でフェードイン
+const fadeEls = document.querySelectorAll('.fade-in');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// ナビのスムーズスクロール
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 64;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
