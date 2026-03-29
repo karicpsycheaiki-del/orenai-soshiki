@@ -1485,19 +1485,19 @@ a { color: inherit; text-decoration: none; }
   method="POST">
         <div class="form-group">
           <label class="form-label">お名前 <span>*</span></label>
-          <input type="text" class="form-input" placeholder="山田 太郎">
+          <input type="text" name="お名前" class="form-input" placeholder="山田 太郎">
         </div>
         <div class="form-group">
           <label class="form-label">会社名・役職</label>
-          <input type="text" class="form-input" placeholder="〇〇株式会社 人事部長">
+          <input type="text" name="会社名・役職" class="form-input" placeholder="〇〇株式会社 人事部長">
         </div>
         <div class="form-group">
           <label class="form-label">メールアドレス <span>*</span></label>
-          <input type="email" class="form-input" placeholder="email@example.com">
+          <input type="email" name="email" class="form-input" placeholder="email@example.com">
         </div>
         <div class="form-group">
           <label class="form-label">ご相談の種類</label>
-          <select class="form-select">
+          <select name="ご相談の種類" class="form-select">
             <option value="">選択してください</option>
             <option>管理職向けラインケア研修</option>
             <option>組織アセスメント・コンサルティング</option>
@@ -1508,7 +1508,7 @@ a { color: inherit; text-decoration: none; }
         </div>
         <div class="form-group">
           <label class="form-label">ご相談内容（任意）</label>
-          <textarea class="form-textarea" placeholder="現在抱えている課題や、気になっていることをお気軽にお書きください。"></textarea>
+          <textarea name="ご相談内容" class="form-textarea" placeholder="現在抱えている..."></textarea>
         </div>
         <button type="submit" class="form-submit">送信する</button>
          </form>
