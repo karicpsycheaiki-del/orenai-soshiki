@@ -1148,7 +1148,27 @@ a { color: inherit; text-decoration: none; }
 .footer-policy a:hover {
   color: var(--gold);
 }
+/* --- YouTube表示の崩れを直すための追加設定 --- */
+.yt-video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* 動画の形を16:9に保ちます */
+}
 
+.yt-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.yt-info {
+  padding: 24px;
+  background: #ffffff;
+}
+/* ----------------------------------------- */
 /* ============================================================
    RESPONSIVE
 ============================================================ */
@@ -1423,39 +1443,30 @@ a { color: inherit; text-decoration: none; }
 
     <div class="youtube-grid">
       <div class="yt-card fade-in">
-       <div class="yt-card fade-in">
-        <iframe> width="100%" height="315" src="https://www.youtube.com/embed/mvrN3sVjE8Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-  
-        <div class="yt-info">
-          <h3 class="yt-info-title">【最強の予防】メンタルヘルスへの予防的取り組みが強い組織を作る心理学的な理由</h3>
-          <p class="yt-info-meta">Psychology for Management</p>
+        <div class="yt-video-container">
+          <iframe src="https://www.youtube.com/embed/mvrN3sVjE8Q" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
         </div>
-      </div>
         <div class="yt-info">
-          <div class="yt-info-title">元精神科クリニックの臨床心理士が、なぜ管理職支援をしているのか</div>
-          <div class="yt-info-meta">自己紹介 ／ Week 1</div>
+          <div class="yt-thumb-tag">組織心理学</div>
+          <h3 class="yt-info-title">職場のメンタル不調、9割は管理職の対応で防げる</h3>
+          <p class="yt-info-meta">実績・専門性 ／ Week 2</p>
         </div>
       </div>
 
       <div class="yt-card fade-in">
-        <div class="yt-thumb">
-          <div class="yt-play"></div>
-          <div class="yt-thumb-text">
-            <div class="yt-thumb-tag">組織心理学</div>
-            <div class="yt-thumb-title">職場のメンタル不調、<br><em>9割は管理職</em>の対応で防げる</div>
-          </div>
+        <div class="yt-video-container">
+          <iframe src="https://www.youtube.com/embed/mvrN3sVjE8Q" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="yt-info">
-          <div class="yt-info-title">職場のメンタル不調、9割は管理職の対応で防げる【臨床心理士が解説】</div>
-          <div class="yt-info-meta">実績・専門性 ／ Week 2</div>
+          <div class="yt-thumb-tag">Psychology for Management</div>
+          <h3 class="yt-info-title">【最強の予防】メンタルヘルスへの予防的取り組みが強い組織を作る理由</h3>
+          <p class="yt-info-meta">自己紹介 ／ Week 1</p>
         </div>
       </div>
     </div>
 
-    <div class="yt-cta fade-in">
-      <a href="https://youtube.com/@orenai-soshiki" target="_blank" class="btn-youtube">
-        YouTubeチャンネルを見る →
-      </a>
+    <div class="yt-cta">
+      <a href="https://www.youtube.com/@orenaisoshiki" class="btn-youtube" target="_blank">YouTubeチャンネルを見る →</a>
     </div>
   </div>
 </section>
