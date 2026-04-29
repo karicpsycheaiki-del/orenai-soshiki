@@ -1523,14 +1523,14 @@ a { color: inherit; text-decoration: none; }
 
     <div class="sim-container fade-in">
       <div class="sim-grid">
-        <div class="sim-input-group">
-          <label class="sim-label">年間の離職人数（名）</label>
-          <input type="number" id="sim-n" class="sim-input" value="1" oninput="doCalc()">
-        </div>
-        <div class="sim-input-group">
-          <label class="sim-label">社員1人あたりの平均年収（万円）</label>
-          <input type="number" id="sim-s" class="sim-input" value="400" oninput="doCalc()">
-        </div>
+       <div class="sim-input-group">
+  <label class="sim-label">年間の離職人数（名）</label>
+  <input type="number" id="sim-n" class="sim-input" value="1">
+</div>
+<div class="sim-input-group">
+  <label class="sim-label">社員1人あたりの平均年収（万円）</label>
+  <input type="number" id="sim-s" class="sim-input" value="400">
+</div>
       </div>
 
       <div class="sim-result-box">
@@ -1721,27 +1721,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 </script>
 <script>
-   // ページが読み込まれたら実行
+<script>
+// ページが読み込まれたら開始
 window.addEventListener('DOMContentLoaded', () => {
-    // 最初の1回を実行
-    doCalc();
-});
-function doCalc() {
-    // 要素をしっかり取得できているか確認
     const inputN = document.getElementById('sim-n');
     const inputS = document.getElementById('sim-s');
-    const resultArea = document.getElementById('sim-total');
 
-    // 要素が存在する場合のみ計算を実行
-    if (inputN && inputS && resultArea) {
-        const n = inputN.value;
-        const s = inputS.value;
-        const loss = Math.floor(n * s * 0.5);
+    // 入力欄があるか確認
+    if (inputN && inputS) {
+        // 数字が入力されるたびに計算を実行する
+        inputN.addEventListener('input', doCalc);
+        inputS.addEventListener('input', doCalc);
         
-        if (n >= 0 && s >= 0) {
-            resultArea.innerHTML = loss.toLocaleString() + '<span class="sim-result-unit">万円</span>';
-        }
+        // ページを開いた瞬間に一度計算
+        doCalc();
     }
+});
+
+function doCalc() {
+    const n = document.getElementById('sim-n').value;
+    const s = document.getElementById('sim-s').value;
+    const target = document.getElementById('sim-total');
+
+    if (!target) return;
+
+    // 計算実行（年収の50%）
+    const loss = Math.floor(n * s * 0.5);
+
+    // 結果を反映（カンマ区切り）
+    target.innerHTML = loss.toLocaleString() + '<span class="sim-result-unit">万円</span>';
+}
 
 
 // フェードインアニメーションの制御
