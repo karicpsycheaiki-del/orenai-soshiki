@@ -1168,6 +1168,88 @@ a { color: inherit; text-decoration: none; }
   padding: 24px;
   background: #ffffff;
 }
+/* ============================================================
+    SIMULATOR (追加)
+============================================================ */
+.simulator {
+  padding: 100px 0;
+  background: var(--gold-pale);
+}
+
+.sim-container {
+  max-width: 800px;
+  margin: 56px auto 0;
+  background: var(--white);
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid var(--border);
+}
+
+.sim-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .sim-grid { grid-template-columns: 1fr; }
+}
+
+.sim-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sim-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-deep);
+}
+
+.sim-input {
+  padding: 12px;
+  border: 1px solid var(--gray-light);
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: var(--sans);
+}
+
+.sim-result-box {
+  background: var(--green-deep);
+  color: var(--white);
+  padding: 30px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.sim-result-label {
+  font-size: 14px;
+  color: var(--gold-light);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.sim-result-value {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 900;
+  color: var(--white);
+}
+
+.sim-result-unit {
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.sim-note {
+  font-size: 12px;
+  color: var(--gray);
+  margin-top: 15px;
+  line-height: 1.6;
+}
 /* ----------------------------------------- */
 /* ============================================================
    RESPONSIVE
@@ -1429,7 +1511,41 @@ a { color: inherit; text-decoration: none; }
     </div>
   </div>
 </section>
+<section class="simulator" id="calc">
+  <div class="container">
+    <div class="fade-in" style="text-align: center;">
+      <span class="section-label">Cost Simulation</span>
+      <h2 class="section-title">離職・不調による<br>「目に見えない損失」を試算する</h2>
+      <p style="margin-top:15px; color:var(--gray);">求人広告費だけではない、教育コストや生産性低下を含めた推計値を算出します。</p>
+    </div>
 
+    <div class="sim-container fade-in">
+      <div class="sim-grid">
+        <div class="sim-input-group">
+          <label class="sim-label">年間の離職人数（名）</label>
+          <input type="number" id="sim-n" class="sim-input" value="1" oninput="doCalc()">
+        </div>
+        <div class="sim-input-group">
+          <label class="sim-label">社員1人あたりの平均年収（万円）</label>
+          <input type="number" id="sim-s" class="sim-input" value="400" oninput="doCalc()">
+        </div>
+      </div>
+
+      <div class="sim-result-box">
+        <span class="sim-result-label">御社の年間推定損失額</span>
+        <div class="sim-result-value" id="sim-total">200<span class="sim-result-unit">万円</span></div>
+      </div>
+
+      <p class="sim-note">
+        ※試算根拠：離職1名あたり、年収の50%（採用コスト・教育工数・引き継ぎ時の機会損失）を損失として計上。メンタル不調に伴う周囲の生産性低下コストは含んでいません。
+      </p>
+      
+      <div style="text-align: center; margin-top: 30px;">
+        <a href="#contact" class="btn-primary">詳細な試算と対策を相談する</a>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- ============================================================
   YOUTUBE
 ============================================================ -->
@@ -1602,6 +1718,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 </script>
+<script>
+function doCalc() {
+    const n = document.getElementById('sim-n').value;
+    const s = document.getElementById('sim-s').value;
+    // 損失係数を0.5（年収の半分）として計算
+    const loss = Math.floor(n * s * 0.5);
+    
+    if (n >= 0 && s >= 0) {
+        document.getElementById('sim-total').innerHTML = loss.toLocaleString() + '<span class="sim-result-unit">万円</span>';
+    }
+}
 
+// フェードインアニメーションの制御
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// 読み込み時に一度計算
+doCalc();
+</script>
 </body>
 </html>
