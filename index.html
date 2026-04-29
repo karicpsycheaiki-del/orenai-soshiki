@@ -1727,15 +1727,22 @@ window.addEventListener('DOMContentLoaded', () => {
     doCalc();
 });
 function doCalc() {
-    const n = document.getElementById('sim-n').value;
-    const s = document.getElementById('sim-s').value;
-    // 損失係数を0.5（年収の半分）として計算
-    const loss = Math.floor(n * s * 0.5);
-    
-    if (n >= 0 && s >= 0) {
-        document.getElementById('sim-total').innerHTML = loss.toLocaleString() + '<span class="sim-result-unit">万円</span>';
+    // 要素をしっかり取得できているか確認
+    const inputN = document.getElementById('sim-n');
+    const inputS = document.getElementById('sim-s');
+    const resultArea = document.getElementById('sim-total');
+
+    // 要素が存在する場合のみ計算を実行
+    if (inputN && inputS && resultArea) {
+        const n = inputN.value;
+        const s = inputS.value;
+        const loss = Math.floor(n * s * 0.5);
+        
+        if (n >= 0 && s >= 0) {
+            resultArea.innerHTML = loss.toLocaleString() + '<span class="sim-result-unit">万円</span>';
+        }
     }
-}
+
 
 // フェードインアニメーションの制御
 const observer = new IntersectionObserver((entries) => {
